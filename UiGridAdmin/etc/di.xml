@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="tax_amount" xsi:type="string">sales_order.tax_amount</item>
+            </argument>
+        </arguments>
+    </virtualType>
+   <!-- <type name="Magento\Sales\Model\ResourceModel\Provider\NotSyncedDataProvider">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="order_data_update" xsi:type="string">ScripCo\UiGridAdmin\Model\ResourceModel\Provider\OrderDataUpdateProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="OrderDataSyncProvider" type="Magento\Sales\Model\ResourceModel\Provider\NotSyncedDataProvider">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="order_data_update" xsi:type="string">ScripCo\UiGridAdmin\Model\ResourceModel\Provider\OrderDataUpdateProvider</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Sales\Model\ResourceModel\Provider\NotSyncedDataProvider">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="customer_data_update" xsi:type="string">ScripCo\UiGridAdmin\Model\ResourceModel\Provider\CustomerDataUpdateProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="CustomerDataSyncProvider" type="Magento\Sales\Model\ResourceModel\Provider\NotSyncedDataProvider">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="customer_data_update" xsi:type="string">ScripCo\UiGridAdmin\Model\ResourceModel\Provider\CustomerDataUpdateProvider</item>
+            </argument>
+        </arguments>
+    </virtualType>-->
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid">
+        <arguments>
+            <argument name="joins" xsi:type="array">
+                <item name="bill_customer_data" xsi:type="array">
+                    <item name="table" xsi:type="string">magento_customercustomattributes_sales_flat_order_address</item>
+                    <item name="origin_column" xsi:type="string">billing_address_id</item>
+                    <item name="target_column" xsi:type="string">entity_id</item>
+                </item>
+                <item name="ship_customer_data" xsi:type="array">
+                    <item name="table" xsi:type="string">magento_customercustomattributes_sales_flat_order_address</item>
+                    <item name="origin_column" xsi:type="string">shipping_address_id</item>
+                    <item name="target_column" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="billing_customer_edp" xsi:type="string">bill_customer_data.customer_edp</item>
+                <item name="billing_customer_number" xsi:type="string">bill_customer_data.customer_number</item>
+                <item name="shipping_customer_edp" xsi:type="string">ship_customer_data.customer_edp</item>
+                <item name="shipping_customer_number" xsi:type="string">ship_customer_data.customer_number</item>
+                <item name="cc_type" xsi:type="string">sales_order_payment.cc_type</item>
+            </argument>
+            <argument name="allCustomerDataSyncProvider" xsi:type="object">CustomerDataSyncProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShipmentGridAggregator">
+        <arguments>
+            <argument name="joins" xsi:type="array">
+                <item name="ship_customer_data" xsi:type="array">
+                    <item name="table" xsi:type="string">magento_customercustomattributes_sales_flat_order_address</item>
+                    <item name="origin_column" xsi:type="string">shipping_address_id</item>
+                    <item name="target_column" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="shipping_customer_edp" xsi:type="string">ship_customer_data.customer_edp</item>
+                <item name="shipping_customer_number" xsi:type="string">ship_customer_data.customer_number</item>
+                <item name="ecometry_order_number" xsi:type="string">sales_order.ecometry_order_number</item>
+                <item name="tax_amount" xsi:type="string">sales_order.tax_amount</item>
+            </argument>
+            <argument name="allCustomerDataSyncProvider" xsi:type="object">CustomerDataSyncProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Invoice\Grid">
+        <arguments>
+            <argument name="joins" xsi:type="array">
+                <item name="bill_customer_data" xsi:type="array">
+                    <item name="table" xsi:type="string">magento_customercustomattributes_sales_flat_order_address</item>
+                    <item name="origin_column" xsi:type="string">billing_address_id</item>
+                    <item name="target_column" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="billing_customer_edp" xsi:type="string">bill_customer_data.customer_edp</item>
+                <item name="billing_customer_number" xsi:type="string">bill_customer_data.customer_number</item>
+                <item name="ecometry_order_number" xsi:type="string">sales_order.ecometry_order_number</item>
+                <item name="tax_amount" xsi:type="string">sales_invoice.tax_amount</item>
+                <item name="cc_type" xsi:type="string">sales_order_payment.cc_type</item>
+                <item name="order_status" xsi:type="string">sales_order.status</item>
+            </argument>
+            <argument name="allCustomerDataSyncProvider" xsi:type="object">CustomerDataSyncProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CreditmemoGridAggregator">
+        <arguments>
+            <argument name="joins" xsi:type="array">
+                <item name="bill_customer_data" xsi:type="array">
+                    <item name="table" xsi:type="string">magento_customercustomattributes_sales_flat_order_address</item>
+                    <item name="origin_column" xsi:type="string">billing_address_id</item>
+                    <item name="target_column" xsi:type="string">entity_id</item>
+                </item>
+                <item name="sales_invoice" xsi:type="array">
+                    <item name="table" xsi:type="string">sales_invoice</item>
+                    <item name="origin_column" xsi:type="string">invoice_id</item>
+                    <item name="target_column" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <argument name="columns" xsi:type="array">
+                <item name="billing_customer_edp" xsi:type="string">bill_customer_data.customer_edp</item>
+                <item name="billing_customer_number" xsi:type="string">bill_customer_data.customer_number</item>
+                <item name="ecometry_order_number" xsi:type="string">sales_order.ecometry_order_number</item>
+                <item name="tax_amount" xsi:type="string">sales_order.tax_amount</item>
+                <item name="cc_type" xsi:type="string">sales_order_payment.cc_type</item>
+                <item name="invoice_increment_id" xsi:type="string">sales_invoice.increment_id</item>
+                <item name="invoice_created_at" xsi:type="string">sales_invoice.created_at</item>
+                <item name="invoice_grand_total" xsi:type="string">sales_invoice.grand_total</item>
+            </argument>
+            <argument name="allCustomerDataSyncProvider" xsi:type="object">CustomerDataSyncProvider</argument>
+        </arguments>
+    </virtualType>
+</config>

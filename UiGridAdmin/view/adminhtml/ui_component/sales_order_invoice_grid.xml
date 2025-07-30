@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalInfo" xsi:type="string" translate="true">
+                    Invoice #, Order #, Ecometry # and Billing Cust Num are use for Global Search.
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
+    </listingToolbar>
+    <columns name="sales_order_invoice_columns">
+        <column name="increment_id" sortOrder="10">
+            <settings>
+                <label translate="true">Invoice #</label>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="20"/>
+        <column name="order_increment_id" sortOrder="30"/>
+        <column name="order_created_at" sortOrder="40"/>
+        <column name="ecometry_order_number" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Ecometry Order #</label>
+            </settings>
+        </column>
+        <column name="billing_name" sortOrder="60"/>
+        <column name="state" sortOrder="70">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="order_status" component="Magento_Ui/js/grid/columns/select" sortOrder="80">
+            <settings>
+                <filter>select</filter>
+                <options class="Magento\Sales\Ui\Component\Listing\Column\Status\Options"/>
+                <dataType>select</dataType>
+                <label translate="true">Order Status</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="store_id" sortOrder="90">
+            <settings>
+                <label translate="true">Website</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="billing_address" sortOrder="100"/>
+        <column name="shipping_address" sortOrder="110"/>
+        <column name="customer_name" sortOrder="120"/>
+        <column name="customer_email" sortOrder="130"/>
+        <column name="customer_group_id" sortOrder="140"/>
+        <column name="payment_method" sortOrder="140">
+            <settings>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="cc_type" component="Magento_Ui/js/grid/columns/select" sortOrder="145">
+            <settings>
+                <filter>select</filter>
+                <options class="Magento\Payment\Model\Source\Cctype"/>
+                <dataType>select</dataType>
+                <label translate="true">Credit Card Type</label>
+            </settings>
+        </column>
+        <column name="shipping_information" sortOrder="150">
+            <settings>
+                <label translate="true">Shipping Method</label>
+            </settings>
+        </column>
+        <column name="subtotal" sortOrder="160">
+            <settings>
+                <label translate="true">Product Total</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="shipping_and_handling" sortOrder="170">
+            <settings>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="tax_amount" class="Magento\Sales\Ui\Component\Listing\Column\Price" sortOrder="180">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="label" xsi:type="string" translate="true">Tax</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </column>
+        <column name="base_grand_total" sortOrder="190"/>
+        <column name="grand_total" sortOrder="200"/>
+        
+        <column name="billing_customer_edp"  sortOrder="210">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Billing Cust EDP</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_customer_number"  sortOrder="220">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Blling Cust Num</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" sortOrder="230"/>
+    </columns>
+</listing>

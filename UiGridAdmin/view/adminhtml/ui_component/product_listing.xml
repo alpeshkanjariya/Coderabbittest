@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalInfo" xsi:type="string" translate="true">
+                    Name, Item# and Alternate SKU are use for Global Search.
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
+        <filters name="listing_filters">
+            <filterSelect name="shared_catalog">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+            </filterSelect>
+        </filters>
+    </listingToolbar>
+    <columns name="product_columns">
+        <column name="entity_id">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="attribute_set_id">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="visibility" sortOrder="80"/>
+        <column name="websites" sortOrder="110"/>
+        <column name="attachment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </column>
+        <column name="upload_attachment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </column>
+        <column name="qty" sortOrder="120">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="weight" sortOrder="160">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Weight</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="price" sortOrder="170">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="msrp" sortOrder="220">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">MAP</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="brand_name" component="Magento_Ui/js/grid/columns/select" sortOrder="250">
+            <settings>
+                <addField>true</addField>
+                <options class="ScripCo\UiGridAdmin\Model\Product\Entity\Attribute\Source\Brand"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Brand Name</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="ship_status_type" component="Magento_Ui/js/grid/columns/select" sortOrder="280">
+            <settings>
+                <addField>true</addField>
+                <options class="ScripCo\ISDFMessages\Model\Entity\Product\Attribute\Source\ShipStatusType"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Ship Status</label>
+            </settings>
+        </column>
+        <column name="shipping_surcharge" sortOrder="300">
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Ship Surcharge</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="shipping_restriction" component="Magento_Ui/js/grid/columns/select" sortOrder="310">
+            <settings>
+                <addField>true</addField>
+                <options class="ScripCo\ShippingOnPDP\Model\Config\Source\ShippingRestriction"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Ship Method Restrict</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="shared_catalog">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" sortOrder="450"/>
+    </columns>
+</listing>

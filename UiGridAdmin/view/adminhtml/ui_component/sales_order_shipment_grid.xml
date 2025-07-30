@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalInfo" xsi:type="string" translate="true">
+                    Shipping #, Order #, Ecometry # and Shipping Cust Num are use for Global Search.
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
+    </listingToolbar>
+   <columns name="sales_order_shipment_columns">
+        <column name="increment_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Shipment #</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="created_at" sortOrder="20"/>
+        <column name="order_increment_id" sortOrder="30"/>
+        <column name="order_created_at" sortOrder="40"/>
+        <column name="ecometry_order_number" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Ecometry Order #</label>
+            </settings>
+        </column>
+        <column name="shipping_name" sortOrder="60"/>
+        <column name="total_qty" sortOrder="70">
+            <settings>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="order_status" sortOrder="90"/>
+        <column name="store_id" sortOrder="100">
+            <settings>
+                <label translate="true">Website</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="customer_name" sortOrder="110"/>
+        <column name="customer_email" sortOrder="120"/>
+        <column name="customer_group_id" sortOrder="130"/>
+        <column name="billing_address" sortOrder="140"/>
+        <column name="shipping_address" sortOrder="150"/>
+        <column name="payment_method" sortOrder="160"/>
+        <column name="shipping_information" sortOrder="170">
+            <settings>
+                <label translate="true">Shipping Method</label>
+            </settings>
+        </column>
+        <column name="tax_amount" class="Magento\Sales\Ui\Component\Listing\Column\Price" sortOrder="175">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="label" xsi:type="string" translate="true">Tax</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+        <column name="tracking"  sortOrder="180">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Tracking #'s</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+            <settings>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="shipping_customer_edp"  sortOrder="190">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shipping Cust EDP</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_customer_number"  sortOrder="200">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shipping Cust Num</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" sortOrder="210"/>
+    </columns>
+</listing>

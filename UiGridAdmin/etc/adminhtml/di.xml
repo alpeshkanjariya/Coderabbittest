@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Sale order grid -->
+    <!-- type name="Magento\Sales\Model\ResourceModel\Order\Grid\Collection">
+        <plugin name="braintreeSalesOrderGrid" type="\Magento\Braintree\Plugin\SalesOrderGridPlugin" disabled="true"/>
+    </type -->
+    <type name="Magento\Sales\Model\ResourceModel\Order\Grid\Collection">
+        <plugin name="ordercolumn_grid_load_before" type="ScripCo\CustomerCredit\Plugin\Sales\Order\Grid" disabled="true"/>
+    </type>
+    <!-- admin grid show selected Columns in csv/xml -->
+    <preference for="Magento\Ui\Model\Export\MetadataProvider" type="ScripCo\UiGridAdmin\Model\Export\MetadataProvider" />
+	<preference for="Magento\Ui\Component\Filters\Type\Select" type="ScripCo\UiGridAdmin\Component\Filters\Type\Select" />
+	<type name="Magento\Catalog\Ui\DataProvider\Product\AddStoreFieldToCollection">
+        <plugin name="product_grid_ui_add_store_filter_on_null" type="ScripCo\UiGridAdmin\Plugin\Catalog\Ui\DataProvider\Product\AddStoreFieldToCollection" />
+    </type>
+</config>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sales_order_grid">
+        <index referenceId="FTI_65B9E9925EC58F0C7C2E2F6379C233E7" disabled="true" />
+        <column xsi:type="varchar" name="ecometry_order_number" nullable="true" length="255" comment="Ecometry Order number"/>
+        <column xsi:type="varchar" name="billing_customer_number" nullable="true" length="255" comment="Billing Customer Number"/>
+        <index referenceId="FTI_7D56D45EDAEB53667D7A80AB82FAF3E4" indexType="fulltext">
+            <column name="increment_id"/>
+            <column name="customer_email"/>
+            <column name="ecometry_order_number"/>
+            <column name="billing_customer_number"/>
+        </index>
+    </table>
+    <table name="sales_shipment_grid">
+        <index referenceId="FTI_086B40C8955F167B8EA76653437879B4" disabled="true" />
+        <column xsi:type="timestamp" name="order_created_at" on_update="false"/>
+        <column xsi:type="varchar" name="ecometry_order_number" nullable="true" length="255" comment="Ecometry Order number"/>
+        <column xsi:type="varchar" name="shipping_customer_number" nullable="true" length="255" comment="Shipping Customer Number"/>
+        <index referenceId="FTI_B01B4E71C4A14C5EAB6E23890FFF82EB" indexType="fulltext">
+            <column name="increment_id"/>
+            <column name="order_increment_id"/>
+            <column name="ecometry_order_number"/>
+            <column name="shipping_customer_number"/>
+        </index>
+    </table>
+    <table name="sales_invoice_grid">
+        <index referenceId="FTI_95D9C924DD6A8734EB8B5D01D60F90DE" disabled="true" />
+        <column xsi:type="varchar" name="ecometry_order_number" nullable="true" length="255" comment="Ecometry Order number"/>
+        <column xsi:type="varchar" name="billing_customer_number" nullable="true" length="255" comment="Billing Customer Number"/>
+        <index referenceId="FTI_DDCE6065DFDE8ADCF145AFB27F2A42B7" indexType="fulltext">
+            <column name="increment_id"/>
+            <column name="order_increment_id"/>
+            <column name="ecometry_order_number"/>
+            <column name="billing_customer_number"/>
+        </index>
+    </table>
+    <table name="sales_creditmemo_grid">
+        <index referenceId="FTI_32B7BA885941A8254EE84AE650ABDC86" disabled="true" />
+        <column xsi:type="text" name="invoice_increment_id" nullable="true" comment="Invoice Increment Id"/>
+        <column xsi:type="varchar" name="ecometry_order_number" nullable="true" length="255" comment="Ecometry Order number"/>
+        <column xsi:type="varchar" name="billing_customer_number" nullable="true" length="255" comment="Billing Customer Number"/>
+        <index referenceId="FTI_C77EC2BD4E3EE71A37B6C0762AE59605" indexType="fulltext">
+            <column name="increment_id"/>
+            <column name="invoice_increment_id"/>
+            <column name="order_increment_id"/>
+            <column name="ecometry_order_number"/>
+            <column name="billing_customer_number"/>
+        </index>
+    </table>
+</schema>

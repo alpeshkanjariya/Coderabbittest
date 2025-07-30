@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="ScripCo_UiGridAdmin" setup_version="1.0.4">
+        <sequence>
+            <module name="Magento_Sales"/>
+            <module name="Magento_Catalog"/>
+            <module name="Amasty_ProductAttachment"/>
+            <module name="ScripCo_ISDFMessages"/>
+            <module name="Amasty_ShopbyBrand"/>
+            <module name="ScripCo_ShippingOnPDP"/>
+            <module name="Magento_SharedCatalog"/>
+            <module name="Magento_CatalogInventory"/>
+        </sequence>
+    </module>
+</config>
